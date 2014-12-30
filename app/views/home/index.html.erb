@@ -1,0 +1,14 @@
+<form action="/" method="get">
+  <input name="authenticity_token" type="hidden" value="NrOp5bsjoLRuK8IW5+dQEYjKGUJDe7TQoZVvq95Wteg=" />
+  <label>Data</label>:
+  <input name="data" type="textarea" />
+  <input name="commit" type="submit" value="Create Person" />
+</form>
+
+<% if @doc %>
+	<% @info.each do |obj|%>
+		<%=obj%><br/>
+	<%end%>
+
+	<%#= link_to "CSV", show_result_path(format: "csv") %>
+<%end%>	
