@@ -2,7 +2,7 @@ class HomeController < ApplicationController
   def index
   	if params[:data]
   		@doc = eval(params[:data])
-  		session[:data] = @info
+  		#session[:data] = @info
   		# render text: @info.to_csv
   	end	
   	# respond_to do |format|
