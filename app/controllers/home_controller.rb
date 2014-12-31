@@ -21,4 +21,8 @@ class HomeController < ApplicationController
     end
   end
 
+  def test
+
+  end	
+
 end
