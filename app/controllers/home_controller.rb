@@ -1,23 +1,27 @@
 class HomeController < ApplicationController
   def index
   	if params[:data]
-  		@doc = eval(params[:data])
-  		#session[:data] = @info
-  		# render text: @info.to_csv
+      @first= 1
+      @last = 10
+      session[:data] = params[:data]
   	end	
-  	# respond_to do |format|
-   #    format.html
-   #    format.csv { render text: @info.to_csv } if @info
-   #    binding.pry
-   #  end
   end
+
+  def get_data
+      @info = []
+      start_n = params[:num].to_i
+      end_n = start_n.to_i + 2
+      (start_n..end_n).each do |n|
+        @doc = eval(session[:data])
+      end  
+      render :json => {:data => @info, :num => end_n}.to_json 
+  end  
 
   def show_result
     @selected_data = session[:data]
     respond_to do |format|
       format.html
       format.csv { send_data @selected_data.to_csv }
-      #format.xls  #{ send_data @selected_data.to_csv(col_sep: "\t"),filename: params[:name] }
     end
   end
 

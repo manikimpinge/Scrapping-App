@@ -1,2 +1,4 @@
 @info = [];
-2.times.each{|n| n=n+1;puts "#{n}";url = "http://www.commercialguru.com.sg/find-commercial-properties/property-for-rent/#{n}?property_type=O&submit=Search";doc=Nokogiri::HTML(open(url));doc.css(".info1").each{|a| @info << "#{a.css(".top3")[1].text.split.join(" ").gsub("Marketed by ","").gsub(" - Call ",",")}";}}
+20.times.each{|n| n=n+1;puts "#{n}";url = "http://www.commercialguru.com.sg/find-commercial-properties/property-for-rent/#{n}?property_type=O&submit=Search";doc=Nokogiri::HTML(open(url));doc.css(".info1").each{|a| @info << "#{a.css(".top3")[1].text.split.join(" ").gsub("Marketed by ","").gsub(" - Call ",",")}";}}
+
+puts "#{n}";url = "http://www.commercialguru.com.sg/find-commercial-properties/property-for-rent/#{n}?property_type=O&submit=Search";doc=Nokogiri::HTML(open(url));doc.css(".info1").each{|a| @info << "#{a.css(".top3")[1].text.split.join(" ").gsub("Marketed by ","").gsub(" - Call ",",")}";}

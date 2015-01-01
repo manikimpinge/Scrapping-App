@@ -6,9 +6,38 @@
 </form>
 
 <% if @doc %>
+	<div class="data">
 	<% @info.each do |obj|%>
 		<%=obj%><br/>
 	<%end%>
-
+	</div>
 	<%#= link_to "CSV", show_result_path(format: "csv") %>
 <%end%>	
+<div class="data"></div>
+<script type= text/javascript>
+	var num = <%=@first%>
+
+	$(document).ready(function(){
+		get_data()		
+	})
+
+	function get_data(){
+		if (<%=@first%> < <%=@last%>){
+			$.ajax({
+				type:'get',
+				url: '/get_data',
+				data: 'num='+num,
+				success: function(response){
+					num = num + 5;
+					$.each(response.data,function(a,i){$(".data").append(i+"<br/>")})
+					if(response.num < <%=@last%>){
+						get_data();
+					}
+				},
+				error: function(){
+					alert('Sorry, something has gone wrong with response. please try later')
+				}
+			})
+		}	
+	}	
+</script>
