@@ -6,7 +6,7 @@ Rails.application.routes.draw do
    root 'home#index'
    get "show_result" => "home#show_result"
    get "test" => "home#test"
-   mount PgHero::Engine, at: "pghero"
+   # mount PgHero::Engine, at: "pghero"
    get "get_data" => "home#get_data"
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
